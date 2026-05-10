@@ -1,0 +1,108 @@
+
+/*printare*/
+@media print {
+
+    #banner-scolar {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: block !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        width: 70% !important;
+        border: 4px inset black !important;
+        text-align: center !important;
+        padding: 10px !important;
+        background-color: white !important;
+        color: black !important;
+        z-index: 9999 !important;
+    }
+
+    img,
+    video,
+    iframe,
+    embed,
+    picture,
+    source,
+    figcaption,
+    audio,
+    #link-top {
+        display: none !important;
+    }
+
+    main {
+        display: block !important;
+    }
+
+    a {
+        text-decoration: none !important;
+        color: black !important;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    header h1 {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    header nav>ul {
+        display: block !important;
+        list-style-type: disc !important;
+        padding-left: 20px;
+        text-align: left;
+    }
+
+    header nav>ul>li {
+        display: list-item !important;
+    }
+
+    header nav ul ul {
+        display: none !important;
+    }
+
+    header nav {
+        break-after: page;
+        page-break-after: always;
+    }
+
+    footer {
+        break-after: page;
+        page-break-after: always;
+
+    }
+
+    #watermark {
+        display: block !important;
+        visibility: visible !important;
+        position: fixed !important;
+        bottom: 1cm !important;
+        right: 1cm !important;
+        width: 4cm !important;
+        height: 1cm !important;
+        line-height: 0.5cm !important;
+        border: 3px solid black !important;
+        border-radius: 5px !important;
+        font-weight: bold !important;
+        text-align: center !important;
+        opacity: 0.4 !important;
+        background-color: white !important;
+        color: black !important;
+        z-index: 9999 !important;
+    }
+
+    @page :left {
+        margin-left: 3cm;
+        margin-right: 1cm;
+    }
+
+    @page :right {
+        margin-left: 1cm;
+        margin-right: 3cm;
+    }
+}

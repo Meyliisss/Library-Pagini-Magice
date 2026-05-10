@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420">
+    <rect width="800" height="420" fill="#fcf6ec" stroke="#8b5a2b" stroke-width="6"/>
+    <text x="400" y="35" font-family="Arial, sans-serif" font-size="22" fill="#5c4033" text-anchor="middle" font-weight="bold">PLANUL LIBRĂRIEI - PAGINI MAGICE</text>
+    
+    <!-- Zona de Oferte (Stanga - Rect) -->
+    <rect x="50" y="60" width="200" height="320" fill="#e8d8c8" stroke="#8b5a2b" stroke-width="3"/>
+    <rect x="70" y="80" width="160" height="50" fill="#c19a6b"/>
+    <rect x="70" y="150" width="160" height="50" fill="#c19a6b"/>
+    <rect x="70" y="220" width="160" height="50" fill="#c19a6b"/>
+    <rect x="70" y="290" width="160" height="50" fill="#c19a6b"/>
+    <text x="150" y="205" font-family="Arial, sans-serif" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="bold" opacity="0.4">OFERTE</text>
+    <text x="150" y="405" font-family="Arial, sans-serif" font-size="16" fill="#8b5a2b" text-anchor="middle" font-weight="bold">Zona Cărților la Reducere</text>
+    
+    <!-- Sfera Evenimentelor (Centru - Circle) -->
+    <circle cx="400" cy="230" r="120" fill="#e8d8c8" stroke="#8b5a2b" stroke-width="3"/>
+    <circle cx="400" cy="230" r="70" fill="#d2b48c"/>
+    <circle cx="400" cy="230" r="30" fill="#c19a6b"/>
+    <text x="400" y="236" font-family="Arial, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" font-weight="bold">SCENĂ</text>
+    <text x="400" y="375" font-family="Arial, sans-serif" font-size="16" fill="#8b5a2b" text-anchor="middle" font-weight="bold">Amfiteatru Evenimente</text>
+
+    <!-- Biroul de Întrebări / FAQ (Dreapta - Poly) -->
+    <polygon points="530,120 730,120 730,340 630,340 630,220 530,220" fill="#e8d8c8" stroke="#8b5a2b" stroke-width="3"/>
+    <polygon points="550,140 710,140 710,320 650,320 650,200 550,200" fill="#c19a6b"/>
+    <text x="630" y="215" font-family="Arial, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" font-weight="bold" transform="rotate(90 680,240)" opacity="0.6">INFO DESK</text>
+    <text x="660" y="105" font-family="Arial, sans-serif" font-size="16" fill="#8b5a2b" text-anchor="middle" font-weight="bold">Biroul FAQ</text>
+</svg>
