@@ -1,0 +1,41 @@
+<!-- eroare.ejs pentru afișarea dinamică a erorilor -->
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <%- include('../fragmente/head.ejs') %>
+        <title>
+            <%= locals.titlu %>
+        </title>
+</head>
+
+<body class="dark-theme">
+    <%- include('../fragmente/header.ejs') %>
+
+        <main>
+            <div class="eroare-container" style="text-align: center; padding: 50px 20px;">
+                <h1 style="font-size: 3em; color: var(--culoare-text, #ffffff); margin-bottom: 20px;">
+                    <%= locals.titlu %>
+                </h1>
+
+                <% if (locals.imagine) { %>
+                    <img src="<%= locals.imagine %>" alt="<%= locals.titlu %>"
+                        style="max-width: 100%; height: auto; max-height: 400px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin-bottom: 30px;">
+                    <% } %>
+
+                        <p style="font-size: 1.2em; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                            <%= locals.text %>
+                        </p>
+
+                        <div style="margin-top: 40px;">
+                            <a href="/index"
+                                style="display: inline-block; padding: 12px 25px; background-color: var(--culoare-accent, #ff7e5f); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: opacity 0.3s;">Înapoi
+                                la Pagina Principală</a>
+                        </div>
+            </div>
+        </main>
+
+        <%- include('../fragmente/footer.ejs') %>
+</body>
+
+</html>

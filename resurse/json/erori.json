@@ -1,0 +1,31 @@
+{
+  "cale_baza": "/resurse/imagini/erori",
+  "eroare_default": {
+    "titlu": "Eroare Nespecificată",
+    "text": "A apărut o eroare neașteptată în timpul procesării cererii dumneavoastră. Magia noastră a întâmpinat un mic obstacol.",
+    "imagine": "default.png"
+  },
+  "info_erori": [
+    {
+      "identificator": 404,
+      "status": true,
+      "titlu": "Pagina nu a fost găsită",
+      "text": "Se pare că pagina pe care o căutați a dispărut ca prin farmec. Vă rugăm să verificați adresa sau să vă întoarceți la pagina principală.",
+      "imagine": "404.png"
+    },
+    {
+      "identificator": 403,
+      "status": true,
+      "titlu": "Acces Interzis",
+      "text": "Această secțiune a bibliotecii este protejată de o vrajă puternică. Nu aveți permisiunea necesară pentru a accesa acest conținut.",
+      "imagine": "403.png"
+    },
+    {
+      "identificator": 500,
+      "status": true,
+      "titlu": "Eroare Internă de Server",
+      "text": "Bagheta magică a serverului nostru s-a defectat temporar. Vrăjitorii noștri lucrează deja la remedierea problemei. Vă rugăm să încercați mai târziu.",
+      "imagine": "500.png"
+    }
+  ]
+}

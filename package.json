@@ -1,0 +1,30 @@
+{
+  "name": "pagini-magice",
+  "version": "1.0.0",
+  "description": "Librărie online de cărți și literatură",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meyliisss/Library-Pagini-Magice.git"
+  },
+  "keywords": [
+    "carti",
+    "librarie",
+    "pagini",
+    "magice"
+  ],
+  "author": "Meylis",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Meyliisss/Library-Pagini-Magice/issues"
+  },
+  "homepage": "https://github.com/Meyliisss/Library-Pagini-Magice#readme",
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1"
+  }
+}

@@ -646,7 +646,6 @@ table th {
     }
 }
 
-/* Adaptare meniu burger submeniu (ecran mic) */
 @media (max-width: 767.98px) {
     header nav ul ul {
         transform: none !important;
@@ -692,6 +691,56 @@ math mfrac {
 }
 
 
+/* gradient pe subtitrări VTT */
+video::cue {
+    background-image: linear-gradient(to right, var(--culoare-text), var(--culoare-baza));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* stilizare linkuri */
+a:visited {
+    color: var(--culoare-border);
+}
+
+a[href^="http"]::before {
+    content: "⍈ ";
+    font-size: 1.5em;
+    color: var(--culoare-baza);
+    transition: color 0.3s ease;
+    vertical-align: middle;
+}
+
+a[href^="http"]:hover::before {
+    color: var(--culoare-accent);
+}
+
+main a:not(.tab-link):not(a:has(picture, img)) {
+    position: relative;
+    text-decoration: none;
+    color: var(--culoare-baza);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    padding: 0 2px;
+
+    background-image: radial-gradient(circle, var(--culoare-accent) 0%, var(--culoare-accent) 40%, transparent 80%, transparent 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0%;
+
+    transition: background-size 0.4s ease, border 0.1s ease;
+}
+
+main a:not(.tab-link):not(a:has(picture, img)):hover {
+    background-size: 100%;
+}
+
+main a:not(.tab-link):not(a:has(picture, img)):active {
+    border: 2px solid var(--culoare-text);
+}
 
 /*printare*/
 @media print {

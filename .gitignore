@@ -1,0 +1,11 @@
+# Dependințe Node
+node_modules/
+
+# Foldere generate de aplicație (Task 20)
+temp/
+backup/
+logs/
+fisiere_uploadate/
+
+# macOS specifice
+.DS_Store

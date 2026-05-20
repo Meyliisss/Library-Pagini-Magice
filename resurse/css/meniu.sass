@@ -162,24 +162,24 @@ header
 
 @media (max-width: 1023px)
     header nav > ul > li > a
-        .text-optiune
-            display: none
+    .text-optiune
+        display: none
         i
             font-size: 1.5rem
 
 // Stilizare meniu pentru ecran mediu
 @media (min-width: 768px) and (max-width: 1023px)
     header nav ul ul a
-        font-size: 0.9rem
+    font-size: 0.9rem
 
 // Adaptare meniu burger submeniu (ecran mic)
 @media (max-width: 767.98px)
     header nav
+    ul
         ul
-            ul
-                transform: none !important // override scale(0) din desktop
-                clip-path: polygon(0 0, 100% 0, 100% 0, 50% 0, 0 0) // initial hidden ca o sageata trasa in sus
-                transition: clip-path 0.4s ease, opacity 0.4s ease, visibility 0.4s ease
+            transform: none !important // override scale(0) din desktop
+            clip-path: polygon(0 0, 100% 0, 100% 0, 50% 0, 0 0) // initial hidden ca o sageata trasa in sus
+            transition: clip-path 0.4s ease, opacity 0.4s ease, visibility 0.4s ease
 
             > li:hover > ul
                 transform: none !important
