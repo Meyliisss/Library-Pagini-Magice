@@ -207,11 +207,21 @@ main {
         "zona5"
         "zona6"
         "zona7"
+        "zona-galerie"
+        "zona-bootstrap"
         "zona8";
     gap: var(--spatiu-grid);
     padding: 20px 0;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+#galerie-sectiune {
+    grid-area: zona-galerie;
+}
+
+#demonstratie-bootstrap {
+    grid-area: zona-bootstrap;
 }
 
 #despre {
@@ -264,11 +274,72 @@ main>section:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
+hr.custom-hr {
+    grid-column: 1 / -1;
+    border: none;
+    height: 4px;
+    background-color: var(--culoare-border);
+    position: relative;
+    margin: 40px auto;
+    width: 60%;
+    overflow: visible;
+}
+
+hr.custom-hr::before,
+hr.custom-hr::after {
+    content: "❈";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--culoare-border);
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+hr.custom-hr::before {
+    left: -2.5rem;
+}
+
+hr.custom-hr::after {
+    right: -2.5rem;
+}
+
 main h2 {
     color: var(--culoare-baza);
     border-bottom: 2px solid var(--culoare-accent);
     padding-bottom: 10px;
     margin-top: 0;
+}
+
+.reflexie-container {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    cursor: pointer;
+    user-select: none;
+    overflow: visible;
+}
+
+.reflexie-container .text-original {
+    display: inline-block;
+    transform: rotate(-10deg);
+    color: var(--culoare-text);
+    transition: color 0.3s ease;
+}
+
+.reflexie-container .text-reflectat {
+    display: inline-block;
+    transform: scaleX(-1) rotate(-10deg);
+    color: var(--culoare-text);
+    opacity: 0.6;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.reflexie-container:hover .text-original,
+.reflexie-container:hover .text-reflectat {
+    color: #5bc0de;
+    opacity: 1;
 }
 
 img,
@@ -472,6 +543,8 @@ table th {
             "zona2 zona2"
             "zona5 zona6"
             "zona7 zona7"
+            "zona-galerie zona-galerie"
+            "zona-bootstrap zona-bootstrap"
             "zona8 zona8";
     }
 }
@@ -483,6 +556,8 @@ table th {
             "zona1 zona1 zona1"
             "zona3 zona2 zona4"
             "zona5 zona6 zona7"
+            "zona-galerie zona-galerie zona-galerie"
+            "zona-bootstrap zona-bootstrap zona-bootstrap"
             "zona8 zona8 zona8";
     }
 }
@@ -848,4 +923,224 @@ main a:not(.tab-link):not(a:has(picture, img)):active {
         margin-left: 1cm;
         margin-right: 3cm;
     }
+}
+
+/* ==========================================
+   Stilizare Galerie Statică (CSS Grid & Hover Card Effects)
+   ========================================== */
+.galerie-titlu {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: var(--culoare-baza);
+    font-family: 'Cinzel', serif;
+    position: relative;
+}
+
+.galerie-grid {
+    display: grid;
+    margin: 20px 0;
+    counter-reset: galerie-counter; /* Cerința: Inițializare counter CSS pentru indexarea imaginilor */
+}
+
+/* Ecran Mare: Grid 3x4 cu specificarea exactă a locurilor ocupate și goale */
+@media (min-width: 1024px) {
+    .galerie-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 coloane pe desktop */
+        grid-template-rows: repeat(3, auto);   /* 3 rânduri pe desktop */
+        gap: 30px;
+    }
+
+    /* Cerința: Poziționare explicită 3x4 sub formă de inel în sensul acelor de ceasornic (centrul rândului 2 rămâne gol) */
+    .galerie-articol:nth-child(1) { grid-row: 1; grid-column: 1; } /* Margine Sus stânga: a */
+    .galerie-articol:nth-child(2) { grid-row: 1; grid-column: 2; } /* Margine Sus mijloc-stânga: b */
+    .galerie-articol:nth-child(3) { grid-row: 1; grid-column: 3; } /* Margine Sus mijloc-dreapta: c */
+    .galerie-articol:nth-child(4) { grid-row: 1; grid-column: 4; } /* Margine Sus dreapta: d */
+    
+    .galerie-articol:nth-child(5) { grid-row: 2; grid-column: 4; } /* Margine Dreapta mijloc: e */
+    .galerie-articol:nth-child(6) { grid-row: 3; grid-column: 4; } /* Margine Jos dreapta (colț): f */
+    
+    .galerie-articol:nth-child(7) { grid-row: 3; grid-column: 3; } /* Margine Jos mijloc-dreapta: g */
+    .galerie-articol:nth-child(8) { grid-row: 3; grid-column: 2; } /* Margine Jos mijloc-stânga: h */
+    .galerie-articol:nth-child(9) { grid-row: 3; grid-column: 1; } /* Margine Jos stânga (colț): i */
+    
+    .galerie-articol:nth-child(10) { grid-row: 2; grid-column: 1; } /* Margine Stânga mijloc: j */
+}
+
+/* Ecran Mediu: 2 coloane, flux normal */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .galerie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Ecran Mic: o singură coloană pe verticală, flux normal */
+@media (max-width: 767px) {
+    .galerie-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+.galerie-articol {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 2px solid var(--culoare-border);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    background-color: white;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    counter-increment: galerie-counter; /* Cerința: Incrementare counter CSS pe fiecare articol */
+}
+
+.galerie-articol:hover {
+    transform: translateY(-8px); /* Micro-animație: deplasare pe verticală */
+    box-shadow: 0 12px 30px rgba(96, 60, 186, 0.15); /* Efect de umbră intensă */
+}
+
+.galerie-imagine-container {
+    position: relative;
+    width: 100%;
+    height: 230px; /* Înălțime fixă pentru aliniere perfectă */
+    overflow: hidden;
+}
+
+.galerie-imagine-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Imaginile umplu frumos spațiul cardului */
+    transition: transform 1.25s ease-in-out; /* Cerința: Tranziția va dura o secundă și un sfert (1.25s) */
+}
+
+/* Cerința: Când se vine cu cursorul, imaginea se translatează sus și se mărește cu 30% */
+/* Math: translateY(-15%) scale(1.3) menține marginea de jos perfect aliniată la bază */
+.galerie-articol:hover .galerie-imagine-container img {
+    transform: translateY(-15%) scale(1.3);
+}
+
+.galerie-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Umple înălțimea rămasă în interiorul cardului */
+    background-color: var(--culoare-fundal);
+    border-top: 1px solid rgba(138, 99, 210, 0.15);
+    /* Cerința: Figcaption își schimbă background-ul și culoarea fontului cu o tranziție de 1.25s */
+    transition: background-color 1.25s ease-in-out, color 1.25s ease-in-out;
+}
+
+/* Cerința: Schimbare background și culoare text la hover pentru figcaption */
+.galerie-articol:hover .galerie-info {
+    background-color: var(--culoare-accent); /* Culoare de fundal aleasă */
+    color: white; /* Culoare font aleasă */
+}
+
+.galerie-info h3 {
+    margin: 0 0 10px 0;
+    color: var(--culoare-baza);
+    font-size: 1.3rem;
+    font-family: 'Cinzel', serif;
+    transition: color 1.25s ease-in-out;
+}
+
+.galerie-articol:hover .galerie-info h3 {
+    color: white;
+}
+
+.galerie-info p {
+    margin: 0 0 15px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--culoare-text);
+    flex-grow: 1; /* Împinge data/ceasul în jos */
+    transition: color 1.25s ease-in-out;
+}
+
+.galerie-articol:hover .galerie-info p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Cerința: Indexul va fi scris la începutul descrierii din figcaption cu litere mici (a, b, c...) */
+.galerie-info p::before {
+    content: counter(galerie-counter, lower-latin) ") "; /* Folosește litere mici (a, b, c...) */
+    font-weight: bold;
+    color: var(--culoare-accent); /* Asortat cu culoarea de accent */
+    margin-right: 5px;
+    transition: color 1.25s ease-in-out;
+}
+
+.galerie-articol:hover .galerie-info p::before {
+    color: #ffd700; /* Indexul devine auriu la hover pentru efect magic */
+}
+
+.galerie-time {
+    align-self: flex-start;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--culoare-baza);
+    background-color: rgba(96, 60, 186, 0.08);
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(96, 60, 186, 0.15);
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 1.25s ease-in-out, border-color 1.25s ease-in-out, color 1.25s ease-in-out;
+}
+
+.galerie-articol:hover .galerie-time {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+/* Stilizare text atribuire licență imagini */
+.galerie-atribuire {
+    font-size: 0.8rem;
+    color: var(--culoare-text);
+    opacity: 0.85;
+    margin-top: 5px;
+    display: inline-flex;
+    align-items: center;
+    transition: color 1.25s ease-in-out, opacity 1.25s ease-in-out;
+}
+
+.galerie-atribuire a {
+    color: var(--culoare-accent);
+    text-decoration: underline;
+    font-weight: bold;
+    margin: 0 4px;
+    transition: color 1.25s ease-in-out;
+}
+
+.galerie-articol:hover .galerie-atribuire {
+    color: rgba(255, 255, 255, 0.95);
+    opacity: 1;
+}
+
+.galerie-articol:hover .galerie-atribuire a {
+    color: #ffd700; /* Link-urile devin aurii la hover pe fundalul violet închis */
+}
+
+/* Badge creativ de timp rămas (Bonus Creativitate) */
+.galerie-badge-timp {
+    align-self: flex-start;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #27ae60; /* Verde elegant */
+    background-color: rgba(39, 174, 96, 0.08);
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(39, 174, 96, 0.15);
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 1.25s ease-in-out, border-color 1.25s ease-in-out, color 1.25s ease-in-out;
+}
+
+.galerie-articol:hover .galerie-badge-timp {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
 }

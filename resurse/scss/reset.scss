@@ -1,0 +1,101 @@
+// Variabile pentru valori repetitive și dependente logic
+$margin-default: 0rem;
+$padding-default: 0rem;
+$font-weight-bold: 700;
+$font-style-italic: italic;
+$line-height-base: 1.5;
+$margin-paragraph: 1rem;
+$list-padding-left: 2.5rem;
+$list-bullet-style: square;
+$table-border-color: #dddddd;
+$table-border-width: 0.1rem;
+
+// HTML și BODY folosesc unități fixe (px) conform cerinței
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    font-size: 1rem;
+    line-height: $line-height-base;
+}
+
+// Toate celelalte elemente folosesc exclusiv unități relative
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: $margin-default;
+    padding: $padding-default;
+    border: 0;
+    vertical-align: baseline;
+}
+
+// Structuri HTML5
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+// Liste
+ol, ul {
+    list-style: $list-bullet-style;
+    padding-left: $list-padding-left;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+// Redefinirea stilurilor bold și italic
+strong, b {
+    font-weight: $font-weight-bold;
+}
+
+em, i {
+    font-style: $font-style-italic;
+}
+
+// Blocuri de text
+p {
+    margin-bottom: $margin-paragraph;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote::before, blockquote::after,
+q::before, q::after {
+    content: '';
+    content: none;
+}
+
+// Tabele
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: $margin-paragraph;
+}
+
+th, td {
+    padding: 0.5rem;
+    border: $table-border-width solid $table-border-color;
+    text-align: left;
+}

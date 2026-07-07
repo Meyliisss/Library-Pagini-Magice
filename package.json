@@ -24,7 +24,10 @@
   },
   "homepage": "https://github.com/Meyliisss/Library-Pagini-Magice#readme",
   "dependencies": {
+    "bootstrap": "^5.3.8",
     "ejs": "^5.0.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "sass": "^1.101.0",
+    "sharp": "^0.35.3"
   }
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <!-- Includem fragmentul comun pentru head (meta tag-uri, stiluri de bază, fonturi) -->
+    <%- include('../fragmente/head') %>
+    <title>Galerie Foto - Pagini Magice</title>
+</head>
+
+<body>
+    <!-- Includem header-ul comun al paginii -->
+    <%- include('../fragmente/header') %>
+
+    <!-- Conținutul principal al paginii dedicate galeriei -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: var(--spatiu-intern); display: block;">
+        <!-- Includem fragmentul comun pentru galerie, menținând consistența codului -->
+        <%- include('../fragmente/galerie') %>
+    </main>
+
+    <!-- Includem footer-ul comun al paginii -->
+    <%- include('../fragmente/footer') %>
+</body>
+
+</html>

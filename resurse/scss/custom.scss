@@ -1,0 +1,44 @@
+$font-family-sans-serif: 'Lora', serif;
+$font-family-base: 'Lora', serif;
+
+$h1-font-size: 2.6rem;
+$h2-font-size: 2.1rem;
+$h3-font-size: 1.7rem;
+$h4-font-size: 1.4rem;
+
+$border-radius: 14px;
+$border-radius-sm: 8px;
+$border-radius-lg: 22px;
+
+$btn-primary-color: #ffffff;
+$body-color: #333333;
+
+$link-color: #8a63d2;
+$link-hover-color: #603cba;
+$card-border-width: 3px;
+$card-border-color: #8a63d2;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 850px,
+  lg: 1050px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$primary: #603cba;
+$theme-colors: (
+  "primary": $primary,
+  "secondary": #6c757d,
+  "success": #198754,
+  "info": #0dcaf0,
+  "warning": #ffc107,
+  "danger": #dc3545,
+  "light": #f8f9fa,
+  "dark": #212529,
+  "magic": #8a63d2,
+  "gold": #ffd700
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

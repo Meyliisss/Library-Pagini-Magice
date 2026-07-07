@@ -1,0 +1,97 @@
+{
+  "cale_galerie": "/resurse/imagini/galerie",
+  "imagini": [
+    {
+      "cale_imagine": "magie_carti_1.png",
+      "titlu": "Calea Înțelepciunii",
+      "descriere": "O carte veche care strălucește în semi-întunericul unei biblioteci mistice, dezvăluind secrete străvechi.",
+      "timp": "00:00-23:59",
+      "alt": "O carte deschisă strălucind într-o atmosferă mistică",
+      "atribuire": {
+        "autor": "Freepik",
+        "sursa": "https://www.freepik.com/free-photo/mystical-library-with-magical-books_40192842.htm",
+        "licenta": "CC-BY 4.0",
+        "licenta_url": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    },
+    {
+      "cale_imagine": "magie_carti_2.png",
+      "titlu": "Refugiul Cititorului",
+      "descriere": "Un colț cald de lectură la fereastră într-o după-amiază ploioasă, cu un ceai fierbinte și povești captivante.",
+      "timp": "08:00-16:00"
+    },
+    {
+      "cale_imagine": "magie_carti_3.png",
+      "titlu": "Ascensiunea Literară",
+      "descriere": "O scară în spirală construită în întregime din cărți clasice, ce te poartă printre constelații și nebuloase.",
+      "timp": "09:00-15:00",
+      "alt": "O scară în spirală din romane vechi urcând în cosmos",
+      "atribuire": {
+        "autor": "Unsplash",
+        "sursa": "https://unsplash.com/photos/a-very-long-winding-staircase-in-a-building-123456",
+        "licenta": "CC-BY 3.0",
+        "licenta_url": "https://creativecommons.org/licenses/by/3.0/"
+      }
+    },
+    {
+      "cale_imagine": "magie_carti_4.png",
+      "titlu": "Rafturile Istoriei",
+      "descriere": "O bibliotecă maiestuoasă de lemn masiv ce găzduiește mii de manuscrise de colecție și romane rare.",
+      "timp": "10:00-22:00"
+    },
+    {
+      "cale_imagine": "magie_carti_5.png",
+      "titlu": "Orizonturi Digitale",
+      "descriere": "O carte holografică ce plutește în aer, prezentând viitorul lecturii în era post-digitală.",
+      "timp": "00:00-23:59",
+      "alt": "O carte holografică albastră plutind deasupra unei tablete"
+    },
+    {
+      "cale_imagine": "magie_carti_6.png",
+      "titlu": "Librăria Șoaptelor",
+      "descriere": "Fațada primitoare a unei librării luminate de ghirlande calde sub un cer purpuriu de amurg.",
+      "timp": "11:00-14:00",
+      "alt": "O librărie de epocă cu vitrine iluminate la apus"
+    },
+    {
+      "cale_imagine": "magie_carti_1.png",
+      "titlu": "Codexul Secretelor",
+      "descriere": "Un volum uitat într-o cameră ascunsă a turnului, conținând schițe și hărți ale tărâmurilor nevăzute.",
+      "timp": "08:00-20:00",
+      "alt": "Un vechi manuscris legat în piele maro"
+    },
+    {
+      "cale_imagine": "magie_carti_2.png",
+      "titlu": "Ceainăria Literelor",
+      "descriere": "Un spațiu liniștit unde aromele de mentă și scorțișoară se împletesc cu foșnetul filelor întoarse lent.",
+      "timp": "07:00-13:00"
+    },
+    {
+      "cale_imagine": "magie_carti_3.png",
+      "titlu": "Călătorie printre Stele",
+      "descriere": "O aventură cosmică în care capitolele devin ani-lumină și constelațiile sunt semne de punctuație.",
+      "timp": "00:00-23:59",
+      "alt": "O reprezentare abstractă a unei cărți zburătoare prin spațiu"
+    },
+    {
+      "cale_imagine": "magie_carti_4.png",
+      "titlu": "Arhiva Pierdută",
+      "descriere": "Sute de rafturi prăfuite ce adăpostesc primele ediții ale celor mai mari scriitori din istoria lumii.",
+      "timp": "10:00-17:00"
+    },
+    {
+      "cale_imagine": "magie_carti_5.png",
+      "titlu": "Portalul Virtual",
+      "descriere": "O demonstrație uimitoare de realitate augmentată în care poveștile prind viață în jurul cititorului.",
+      "timp": "18:00-23:59",
+      "alt": "Un ecran strălucitor care arată elemente tridimensionale ale unei cărți"
+    },
+    {
+      "cale_imagine": "magie_carti_6.png",
+      "titlu": "Librăria Crepusculară",
+      "descriere": "Un refugiu cald în inima orașului unde cititorii pot zăbovi până târziu în noapte.",
+      "timp": "20:00-23:59",
+      "alt": "Vitrina unei librării luminate pe o stradă pietonală"
+    }
+  ]
+}

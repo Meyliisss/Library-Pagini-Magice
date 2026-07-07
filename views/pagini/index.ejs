@@ -15,7 +15,10 @@
 
         <main>
             <section id="despre">
-                <h2>Descoperiți universul de cărți la Pagini Magice</h2>
+                <h2 class="reflexie-container">
+                    <span class="text-original">Pagini Magice</span>
+                    <span class="text-reflectat">Pagini Magice</span>
+                </h2>
                 <p>La <em>Pagini Magice</em>, credem că fiecare carte deschide o poartă către o nouă lume. Suntem o
                     <strong>librărie</strong> dedicată să vă aducem cele mai bune <strong>cărți</strong> din toate
                     genurile.
@@ -92,6 +95,8 @@
                     </map>
                 </div>
             </section>
+
+            <hr class="custom-hr">
 
             <section id="catalog">
                 <h2>Literatură și Romane pentru orice pasionat de lectură</h2>
@@ -457,6 +462,31 @@
                         de aspect ratio de top bazate pe flexbox, garantând zero-deplângeri din partea iubitorilor de
                         lectură portabilă.</p>
                 </details>
+            </section>
+
+            <!-- Includem galeria statică de imagini (Cerința: fragment comun) -->
+            <%- include('../fragmente/galerie') %>
+
+            <!-- Secțiune demonstrativă pentru Bootstrap Customizat (Cerință) -->
+            <section id="demonstratie-bootstrap" class="container my-5 p-4 bg-white rounded shadow-sm" style="grid-area: zona-bootstrap; border-radius: var(--bs-border-radius-lg);">
+                <h2 class="mb-4 text-center text-magic" style="color: var(--bs-magic); font-family: var(--bs-font-family-sans-serif);">Customizare și Integrare Bootstrap</h2>
+                <p class="lead text-center mb-4">Butoane și alerte stilizate cu schemele noastre cromatice și setări de border-radius personalizate:</p>
+                <div class="row justify-content-center g-3 text-center">
+                    <div class="col-md-6 col-lg-4">
+                        <button class="btn btn-magic w-100 py-3 fw-bold" style="border-radius: var(--bs-border-radius-lg);">Buton Magic (Custom Bootstrap)</button>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <button class="btn btn-gold w-100 py-3 fw-bold text-dark" style="border-radius: var(--bs-border-radius-lg);">Buton Gold (Custom Bootstrap)</button>
+                    </div>
+                </div>
+                <div class="row mt-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="alert alert-magic text-center shadow-sm" role="alert" style="border-radius: var(--bs-border-radius-lg); background-color: rgba(138, 99, 210, 0.15); color: var(--bs-magic); border-color: rgba(138, 99, 210, 0.3);">
+                            <i class="fa-solid fa-wand-magic-sparkles me-2"></i>
+                            Această alertă folosește schema de culori a temei noastre personalizate <strong>"magic"</strong> și un border-radius de 14px!
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
 

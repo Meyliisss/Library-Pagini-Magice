@@ -1,0 +1,92 @@
+<!-- Fragment EJS pentru Afișarea Galeriei Statice de Imagini (Folosește CSS Grid) -->
+<section id="galerie-sectiune">
+    <!-- Titlul secțiunii de galerie cu o iconiță FontAwesome -->
+    <h2 class="galerie-titlu">
+        <i class="fa-solid fa-images" style="color: var(--culoare-accent); margin-right: 10px;"></i>
+        Galeria Noastră Magică
+        <!-- Afișăm ora simulată a serverului (Bonus Creativitate / Observație) -->
+        <% if (locals.oraSimulata) { %>
+            <span class="galerie-ora-simulata" style="display: block; font-size: 0.95rem; font-weight: normal; color: var(--culoare-text); margin-top: 5px; opacity: 0.85;">
+                <i class="fa-regular fa-clock" style="margin-right: 4px; color: var(--culoare-accent);"></i>
+                (Simulare Server Orei: <%= locals.oraSimulata %>)
+            </span>
+        <% } %>
+    </h2>
+    
+    <!-- Containerul principal Grid pentru imagini -->
+    <div class="galerie-grid">
+        <!-- Verificăm dacă variabila globală 'galerie' există și are un tablou de imagini valid -->
+        <% if (locals.galerie && Array.isArray(locals.galerie.imagini)) { %>
+            <!-- Parcurgem fiecare imagine din listă folosind o buclă forEach -->
+            <% locals.galerie.imagini.forEach(function(imagine) { 
+                // Determinăm extensia și numele fișierului pentru a genera căile redimensionate
+                const indexPunct = imagine.cale_imagine.lastIndexOf('.');
+                const numeFaraExt = imagine.cale_imagine.substring(0, indexPunct);
+                const extensie = imagine.cale_imagine.substring(indexPunct);
+                
+                // Formăm căile pentru mic, mediu și mare
+                const caleSmall = locals.galerie.cale_galerie + '/' + numeFaraExt + '-small' + extensie;
+                const caleMedium = locals.galerie.cale_galerie + '/' + numeFaraExt + '-medium' + extensie;
+                const caleLarge = locals.galerie.cale_galerie + '/' + numeFaraExt + '-large' + extensie;
+
+                // Stabilim valoarea atributului alt: proprietatea alt din JSON sau numele imaginii (cale_imagine)
+                const valoareAlt = imagine.hasOwnProperty('alt') ? imagine.alt : imagine.cale_imagine;
+            %>
+                <article class="galerie-articol">
+                    <!-- Cerința: Utilizare tag figure pentru semantism -->
+                    <figure style="margin: 0; padding: 0; display: flex; flex-direction: column; height: 100%;">
+                        <!-- Cerința: Utilizare tag picture cu surse pentru ecran mic și mediu -->
+                        <picture class="galerie-imagine-container">
+                            <!-- Sursă pentru ecran mic: max-width 600px -->
+                            <source media="(max-width: 600px)" srcset="<%= caleSmall %>">
+                            <!-- Sursă pentru ecran mediu: min-width 601px și max-width 1024px -->
+                            <source media="(max-width: 1024px)" srcset="<%= caleMedium %>">
+                            <!-- Imaginea implicită pentru ecrane mari (large) -->
+                            <!-- Cerința: Descrierea imaginii se adaugă în atributul title -->
+                            <!-- Cerința: Atributul alt conține valoarea din JSON sau numele imaginii -->
+                            <img src="<%= caleLarge %>" 
+                                 alt="<%= valoareAlt %>" 
+                                 title="<%= imagine.descriere %>" 
+                                 loading="lazy">
+                        </picture>
+                        
+                        <!-- Cerința: Utilizare figcaption pentru descriere și detalii -->
+                        <figcaption class="galerie-info">
+                            <h3><%= imagine.titlu %></h3>
+                            <p><%= imagine.descriere %></p>
+                            <!-- Afișarea intervalului de timp cu o iconiță de ceas -->
+                            <div class="galerie-meta-container" style="display: flex; flex-direction: column; gap: 8px; margin-top: auto; align-items: flex-start;">
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <span class="galerie-time">
+                                        <i class="fa-regular fa-clock" style="margin-right: 5px;"></i>
+                                        <%= imagine.timp %>
+                                    </span>
+                                    
+                                    <!-- Badge creativ pentru timpul rămas până la expirarea intervalului (Bonus Creativitate) -->
+                                    <% if (imagine.timpRamas) { %>
+                                        <span class="galerie-badge-timp">
+                                            <i class="fa-solid fa-hourglass-half" style="margin-right: 5px;"></i>
+                                            <%= imagine.timpRamas %>
+                                        </span>
+                                    <% } %>
+                                </div>
+                                
+                                <!-- Cerința: Atribuire de autor pentru imaginea folosită, salvată în JSON -->
+                                <% if (imagine.atribuire) { %>
+                                    <span class="galerie-atribuire">
+                                        <i class="fa-solid fa-copyright" style="margin-right: 4px;"></i>
+                                        Foto: <a href="<%= imagine.atribuire.sursa %>" target="_blank" rel="noopener noreferrer"><%= imagine.atribuire.autor %></a> 
+                                        (<a href="<%= imagine.atribuire.licenta_url %>" target="_blank" rel="noopener noreferrer"><%= imagine.atribuire.licenta %></a>)
+                                    </span>
+                                <% } %>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </article>
+            <% }); %>
+        <% } else { %>
+            <!-- Mesaj afișat în cazul în care datele nu au putut fi încărcate de pe server -->
+            <p style="text-align: center; color: red;">Eroare: Nu s-au putut încărca datele galeriei din fișierul JSON.</p>
+        <% } %>
+    </div>
+</section>
