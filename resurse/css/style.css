@@ -1049,11 +1049,10 @@ main a:not(.tab-link):not(a:has(picture, img)):active {
     object-fit: cover;
     /* Imaginile umplu frumos spațiul cardului */
     transition: transform 1.25s ease-in-out;
-    /* Cerința: Tranziția va dura o secundă și un sfert (1.25s) */
+    /* Tranziția va dura o secundă și un sfert */
 }
 
 /* Când se vine cu cursorul, imaginea se translatează sus și se mărește cu 30% */
-/* Math: translateY(-15%) scale(1.3) menține marginea de jos perfect aliniată la bază */
 .galerie-articol:hover .galerie-imagine-container img {
     transform: translateY(-15%) scale(1.3);
 }
@@ -1066,11 +1065,11 @@ main a:not(.tab-link):not(a:has(picture, img)):active {
     /* Umple înălțimea rămasă în interiorul cardului */
     background-color: var(--culoare-fundal);
     border-top: 1px solid rgba(138, 99, 210, 0.15);
-    /* Cerința: Figcaption își schimbă background-ul și culoarea fontului cu o tranziție de 1.25s */
+    /* Figcaption își schimbă background-ul și culoarea fontului cu o tranziție de 1.25s */
     transition: background-color 1.25s ease-in-out, color 1.25s ease-in-out;
 }
 
-/* Cerința: Schimbare background și culoare text la hover pentru figcaption */
+/* Schimbare background și culoare text la hover pentru figcaption */
 .galerie-articol:hover .galerie-info {
     background-color: var(--culoare-accent);
     /* Culoare de fundal aleasă */
@@ -1104,20 +1103,17 @@ main a:not(.tab-link):not(a:has(picture, img)):active {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Cerința: Indexul va fi scris la începutul descrierii din figcaption cu litere mici (a, b, c...) */
+/* Indexul va fi scris la începutul descrierii din figcaption cu litere mici */
 .galerie-info p::before {
     content: counter(galerie-counter, lower-latin) ") ";
-    /* Folosește litere mici (a, b, c...) */
     font-weight: bold;
     color: var(--culoare-accent);
-    /* Asortat cu culoarea de accent */
     margin-right: 5px;
     transition: color 1.25s ease-in-out;
 }
 
 .galerie-articol:hover .galerie-info p::before {
     color: #ffd700;
-    /* Indexul devine auriu la hover pentru efect magic */
 }
 
 .galerie-time {

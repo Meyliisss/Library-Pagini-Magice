@@ -564,8 +564,8 @@ app.get(/^.*$/, (req, res) => {
 
 /**
  * Compilează un fișier SCSS (sau SASS) în fișier CSS.
- * @param {string} caleScss - Calea către fișierul SCSS/SASS (absolută sau relativă la folderScss)
- * @param {string} [caleCss] - Calea către fișierul CSS (absolută sau relativă la folderCss). Dacă lipsește, se deduce automat.
+ * @param {string} caleScss - Calea către fișierul SCSS/SASS 
+ * @param {string} [caleCss] - Calea către fișierul CSS 
  */
 function compileazaScss(caleScss, caleCss) {
     try {
@@ -587,7 +587,7 @@ function compileazaScss(caleScss, caleCss) {
             return;
         }
 
-        // Cerința C: Salvare în backup a fișierului CSS vechi dacă acesta există
+        // Salvare în backup a fișierului CSS vechi dacă acesta există
         if (fs.existsSync(absoluteCss)) {
             try {
                 let backupDir = path.join(__dirname, 'backup', 'resurse', 'css');
@@ -620,9 +620,7 @@ function compileazaScss(caleScss, caleCss) {
     }
 }
 
-/**
- * Compilarea inițială: compilează toate fișierele .scss și .sass din folderScss.
- */
+// Compilarea inițială: compilează toate fișierele .scss și .sass din folderScss.
 function compileazaInitialScss() {
     try {
         if (fs.existsSync(obGlobal.folderScss)) {
@@ -639,9 +637,8 @@ function compileazaInitialScss() {
     }
 }
 
-/**
- * Monitorizează modificările fișierelor din folderScss.
- */
+//Monitorizează modificările fișierelor din folderScss.
+
 function pornesteWatcherScss() {
     try {
         if (fs.existsSync(obGlobal.folderScss)) {
