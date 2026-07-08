@@ -208,6 +208,7 @@ main {
         "zona6"
         "zona7"
         "zona-galerie"
+        "zona-galerie-animata"
         "zona-bootstrap"
         "zona8";
     gap: var(--spatiu-grid);
@@ -218,6 +219,10 @@ main {
 
 #galerie-sectiune {
     grid-area: zona-galerie;
+}
+
+#galerie-animata-sectiune {
+    grid-area: zona-galerie-animata;
 }
 
 #demonstratie-bootstrap {
@@ -544,6 +549,7 @@ table th {
             "zona5 zona6"
             "zona7 zona7"
             "zona-galerie zona-galerie"
+            "zona-galerie-animata zona-galerie-animata"
             "zona-bootstrap zona-bootstrap"
             "zona8 zona8";
     }
@@ -557,6 +563,7 @@ table th {
             "zona3 zona2 zona4"
             "zona5 zona6 zona7"
             "zona-galerie zona-galerie zona-galerie"
+            "zona-galerie-animata zona-galerie-animata zona-galerie-animata"
             "zona-bootstrap zona-bootstrap zona-bootstrap"
             "zona8 zona8 zona8";
     }

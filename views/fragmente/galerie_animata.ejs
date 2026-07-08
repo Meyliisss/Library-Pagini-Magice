@@ -1,0 +1,30 @@
+<!-- Fragment EJS pentru Afișarea Galeriei Animate de Imagini (Generată Dinamic prin SASS) -->
+<section id="galerie-animata-sectiune">
+    <h2 class="galerie-titlu">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--culoare-accent); margin-right: 10px;"></i>
+        Galeria Magică Animată
+    </h2>
+    
+    <!-- Containerul principal pentru galeria animată -->
+    <div id="galerie-animata">
+        <% if (locals.galerieAnimata && Array.isArray(locals.galerieAnimata.imagini)) { %>
+            <!-- Parcurgem fiecare imagine selectată pentru galeria animată -->
+            <% locals.galerieAnimata.imagini.forEach(function(imagine, index) { 
+                const indexPunct = imagine.cale_imagine.lastIndexOf('.');
+                const numeFaraExt = imagine.cale_imagine.substring(0, indexPunct);
+                const extensie = imagine.cale_imagine.substring(indexPunct);
+                
+                // Folosim versiunea large (450x300px) pentru calitate optimă în galerie
+                const caleLarge = locals.galerieAnimata.cale_galerie + '/' + numeFaraExt + '-large' + extensie;
+                const valoareAlt = imagine.hasOwnProperty('alt') ? imagine.alt : imagine.cale_imagine;
+            %>
+                <figure class="galerie-animata-articol">
+                    <img src="<%= caleLarge %>" alt="<%= valoareAlt %>" title="<%= imagine.descriere %>" loading="lazy">
+                    <figcaption class="galerie-animata-caption"><%= imagine.titlu %></figcaption>
+                </figure>
+            <% }); %>
+        <% } else { %>
+            <p style="text-align: center; color: red;">Eroare: Nu s-au putut încărca datele pentru galeria animată.</p>
+        <% } %>
+    </div>
+</section>

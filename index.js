@@ -505,6 +505,36 @@ app.use(async (req, res, next) => {
         res.locals.oraSimulata = null;
     }
 
+    // Generare galerie animată
+    const isPageRequest = ['/', '/index', '/home', '/galerie'].includes(req.path);
+    if (isPageRequest && obGlobal.obGalerie && Array.isArray(obGlobal.obGalerie.imagini)) {
+        try {
+            // Generăm un număr impar aleator de imagini N
+            const optiuniN = [5, 7, 9, 11];
+            const randomN = optiuniN[Math.floor(Math.random() * optiuniN.length)];
+
+            // Imaginile alese vor fi ultimele definite în JSON
+            const imaginiAlese = obGlobal.obGalerie.imagini.slice(-randomN);
+
+            res.locals.galerieAnimata = {
+                cale_galerie: obGlobal.obGalerie.cale_galerie,
+                imagini: imaginiAlese
+            };
+
+            // Scriem variabila în SASS pentru compilare dinamică
+            const caleScssVariabile = path.join(obGlobal.folderScss, '_galerie_variabile.scss');
+            fs.writeFileSync(caleScssVariabile, `$n-imagini: ${randomN};\n`);
+
+            // Compilăm fișierul SCSS în CSS
+            compileazaScss('galerie_animata.scss');
+        } catch (err) {
+            console.error("Eroare la generarea sau compilarea galeriei animate:", err.message);
+            res.locals.galerieAnimata = null;
+        }
+    } else {
+        res.locals.galerieAnimata = null;
+    }
+
     next();
 });
 
@@ -624,9 +654,15 @@ function compileazaScss(caleScss, caleCss) {
 function compileazaInitialScss() {
     try {
         if (fs.existsSync(obGlobal.folderScss)) {
+            // Asigurăm existența fișierului de variabile pentru a preveni erorile de compilare inițială
+            const caleScssVariabile = path.join(obGlobal.folderScss, '_galerie_variabile.scss');
+            if (!fs.existsSync(caleScssVariabile)) {
+                fs.writeFileSync(caleScssVariabile, `$n-imagini: 5;\n`);
+            }
+
             const files = fs.readdirSync(obGlobal.folderScss);
             for (let file of files) {
-                if (file.endsWith('.scss') || file.endsWith('.sass')) {
+                if ((file.endsWith('.scss') || file.endsWith('.sass')) && !file.startsWith('_')) {
                     compileazaScss(file);
                 }
             }
@@ -644,7 +680,8 @@ function pornesteWatcherScss() {
         if (fs.existsSync(obGlobal.folderScss)) {
             let debounceTimeout = {};
             fs.watch(obGlobal.folderScss, (eventType, filename) => {
-                if (filename && (filename.endsWith('.scss') || filename.endsWith('.sass'))) {
+                // Nu recompilăm fișierele parțiale care încep cu underscore directly
+                if (filename && (filename.endsWith('.scss') || filename.endsWith('.sass')) && !filename.startsWith('_')) {
                     // Debounce pentru a preveni multiple apeluri simultane pe același eveniment
                     if (debounceTimeout[filename]) {
                         clearTimeout(debounceTimeout[filename]);
