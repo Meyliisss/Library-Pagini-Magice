@@ -33,24 +33,24 @@
                 const valoareAlt = imagine.hasOwnProperty('alt') ? imagine.alt : imagine.cale_imagine;
             %>
                 <article class="galerie-articol">
-                    <!-- Cerința: Utilizare tag figure pentru semantism -->
+                    <!-- Utilizare tag figure pentru semantism -->
                     <figure style="margin: 0; padding: 0; display: flex; flex-direction: column; height: 100%;">
-                        <!-- Cerința: Utilizare tag picture cu surse pentru ecran mic și mediu -->
+                        <!-- Utilizare tag picture cu surse pentru ecran mic și mediu -->
                         <picture class="galerie-imagine-container">
                             <!-- Sursă pentru ecran mic: max-width 600px -->
                             <source media="(max-width: 600px)" srcset="<%= caleSmall %>">
                             <!-- Sursă pentru ecran mediu: min-width 601px și max-width 1024px -->
                             <source media="(max-width: 1024px)" srcset="<%= caleMedium %>">
                             <!-- Imaginea implicită pentru ecrane mari (large) -->
-                            <!-- Cerința: Descrierea imaginii se adaugă în atributul title -->
-                            <!-- Cerința: Atributul alt conține valoarea din JSON sau numele imaginii -->
+                            <!-- Descrierea imaginii se adaugă în atributul title -->
+                            <!-- Atributul alt conține valoarea din JSON sau numele imaginii -->
                             <img src="<%= caleLarge %>" 
                                  alt="<%= valoareAlt %>" 
                                  title="<%= imagine.descriere %>" 
                                  loading="lazy">
                         </picture>
                         
-                        <!-- Cerința: Utilizare figcaption pentru descriere și detalii -->
+                        <!-- Utilizare figcaption pentru descriere și detalii -->
                         <figcaption class="galerie-info">
                             <h3><%= imagine.titlu %></h3>
                             <p><%= imagine.descriere %></p>
@@ -71,7 +71,7 @@
                                     <% } %>
                                 </div>
                                 
-                                <!-- Cerința: Atribuire de autor pentru imaginea folosită, salvată în JSON -->
+                                <!-- Atribuire de autor pentru imaginea folosită, salvată în JSON -->
                                 <% if (imagine.atribuire) { %>
                                     <span class="galerie-atribuire">
                                         <i class="fa-solid fa-copyright" style="margin-right: 4px;"></i>

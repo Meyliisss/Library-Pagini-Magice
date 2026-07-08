@@ -24,7 +24,7 @@ let obGlobal = {
     folderCss: path.join(__dirname, 'resurse', 'css')
 };
 
-// Asigurăm crearea folderelor de resurse scss și css dacă nu există
+// asigurarea crearea folderelor de resurse scss și css dacă nu există
 if (!fs.existsSync(obGlobal.folderScss)) {
     fs.mkdirSync(obGlobal.folderScss, { recursive: true });
 }
@@ -32,35 +32,31 @@ if (!fs.existsSync(obGlobal.folderCss)) {
     fs.mkdirSync(obGlobal.folderCss, { recursive: true });
 }
 
-/**
- * Tokenizează un șir JSON brut pentru a face verificări la nivel lexical.
- * Ne ajută la identificarea cheilor duplicate din obiecte (Cerința F),
- * deoarece JSON.parse() suprascrie automat cheile duplicate fără a arunca eroare.
- */
+// Tokenises JSON to verify lexical, helps us to identufy duplicated keysfrom objects and JSON.parse() overwrites them
+
 function tokenizeJson(jsonStr) {
     let tokens = [];
     let i = 0;
     while (i < jsonStr.length) {
         let char = jsonStr[i];
 
-        // Ignorăm spațiile goale, tab-urile și caracterele de linie nouă
         if (/\s/.test(char)) {
             i++;
             continue;
         }
 
-        // Punctuație specifică structurii JSON ({ }, [ ], :, ,)
+        // Punctuație specifică structurii JSON
         if (char === '{' || char === '}' || char === '[' || char === ']' || char === ':' || char === ',') {
             tokens.push({ type: 'punctuation', value: char, pos: i });
             i++;
             continue;
         }
 
-        // Parsare șiruri de caractere delimitate de ghilimele (string-uri)
+        // Parsare șiruri de caractere delimitate de string
         if (char === '"') {
             let strValue = "";
             let startPos = i;
-            i++; // trecem de ghilimeaua de deschidere
+            i++; 
 
             while (i < jsonStr.length) {
                 if (jsonStr[i] === '\\') {
@@ -68,7 +64,7 @@ function tokenizeJson(jsonStr) {
                     strValue += jsonStr[i] + (jsonStr[i + 1] || '');
                     i += 2;
                 } else if (jsonStr[i] === '"') {
-                    i++; // trecem de ghilimeaua de închidere
+                    i++; 
                     break;
                 } else {
                     strValue += jsonStr[i];
@@ -100,8 +96,8 @@ function tokenizeJson(jsonStr) {
 function valideazaEroriJson() {
     const caleFisier = path.join(__dirname, 'resurse', 'json', 'erori.json');
 
-    // === CERINȚA A ===
-    // Verificăm dacă fișierul erori.json există fizic în sistem
+    // A 
+    // verificarea dacă fișierul erori.json există fizic în sistem
     if (!fs.existsSync(caleFisier)) {
         console.error("\x1b[31m%s\x1b[0m", "======================================================================");
         console.error("\x1b[31m%s\x1b[0m", "[CRITIC - Cerința A] Fișierul obligatoriu 'erori.json' nu a fost găsit!");
@@ -109,10 +105,10 @@ function valideazaEroriJson() {
         console.error("Remediere: Creați fișierul 'erori.json' în directorul 'resurse/json/'.");
         console.error("Aplicația se va închide acum pentru a preveni funcționarea defectuoasă.");
         console.error("\x1b[31m%s\x1b[0m", "======================================================================");
-        process.exit(1); // Oprim aplicația cu cod de eroare
+        process.exit(1); 
     }
 
-    // Citim conținutul brut al fișierului ca text
+    // citirea conținutul brut al fișierului ca text
     let continutBrut = "";
     try {
         continutBrut = fs.readFileSync(caleFisier, 'utf8');
@@ -121,15 +117,14 @@ function valideazaEroriJson() {
         return;
     }
 
-    // === CERINȚA F ===
-    // Verificăm dacă există chei duplicate în cadrul aceluiași obiect JSON din fișier (analiză pe text/string)
+    // F
+    // verificarea dacă există chei duplicate în cadrul aceluiași obiect JSON din fișier (analiză pe text/string)
     const tokens = tokenizeJson(continutBrut);
     let stack = [];
 
     for (let i = 0; i < tokens.length; i++) {
         let token = tokens[i];
         if (token.type === 'punctuation' && token.value === '{') {
-            // Intrăm într-un obiect nou, îi creăm un Set propriu de chei
             stack.push({ type: 'object', keys: new Set() });
         } else if (token.type === 'punctuation' && token.value === '}') {
             if (stack.length > 0 && stack[stack.length - 1].type === 'object') {
@@ -167,10 +162,10 @@ function valideazaEroriJson() {
     } catch (err) {
         console.error("\x1b[31m%s\x1b[0m", "[EROARE CRITICĂ] Fișierul erori.json nu este un JSON valid sintactic.");
         console.error(`Mesaj eroare parsare: ${err.message}`);
-        return; // Nu putem continua validările structurale pe un JSON invalid
+        return; 
     }
 
-    // === CERINȚA B ===
+    // B
     // Verificăm prezența proprietăților obligatorii de top: info_erori, cale_baza, eroare_default
     const proprietatiDeBaza = ['info_erori', 'cale_baza', 'eroare_default'];
     for (let prop of proprietatiDeBaza) {
@@ -180,7 +175,7 @@ function valideazaEroriJson() {
         }
     }
 
-    // === CERINȚA C ===
+    // C
     // Verificăm dacă pentru eroarea default lipsesc proprietăți esențiale: titlu, text, imagine
     if (dateJson.hasOwnProperty('eroare_default')) {
         const erDefault = dateJson.eroare_default;
@@ -197,7 +192,7 @@ function valideazaEroriJson() {
         }
     }
 
-    // === CERINȚA D ===
+    // D
     // Verificăm dacă folderul specificat în 'cale_baza' există în sistemul de fișiere
     let caleBazaValida = false;
     let absoluteCaleBaza = "";
@@ -212,10 +207,10 @@ function valideazaEroriJson() {
         }
     }
 
-    // === CERINȚA E ===
+    // E
     // Verificăm dacă imaginile asociate erorilor există în sistemul de fișiere
     if (caleBazaValida) {
-        // 1. Verificăm imaginea de la eroare_default
+        // Verificăm imaginea de la eroare_default
         if (dateJson.eroare_default && dateJson.eroare_default.imagine) {
             const caleImgDefault = path.join(absoluteCaleBaza, dateJson.eroare_default.imagine);
             if (!fs.existsSync(caleImgDefault)) {
@@ -225,7 +220,7 @@ function valideazaEroriJson() {
             }
         }
 
-        // 2. Verificăm imaginile din vectorul de erori specifice (info_erori)
+        // Verificăm imaginile din vectorul de erori specifice
         if (Array.isArray(dateJson.info_erori)) {
             for (let eroare of dateJson.info_erori) {
                 if (eroare && eroare.imagine) {
@@ -240,7 +235,7 @@ function valideazaEroriJson() {
         }
     }
 
-    // === CERINȚA G ===
+    // G
     // Verificăm dacă există mai multe erori cu același identificator în vectorul de erori
     if (Array.isArray(dateJson.info_erori)) {
         let identificatoriVazuti = {};
@@ -272,7 +267,6 @@ function valideazaEroriJson() {
 }
 
 function initErori() {
-    // Apelăm mai întâi funcția de validare înainte de a procesa datele
     valideazaEroriJson();
 
     try {
